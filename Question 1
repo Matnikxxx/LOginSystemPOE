@@ -1,0 +1,63 @@
+public class ConsoleSalesReport {
+
+    public static void main(String[] args) {
+        // Arrays for console names and cities[span_0](start_span)[span_0](end_span)
+        String[] consoles = {"PS5", "XBOX", "SWITCH"};
+        String[] cities = {"CAPE TOWN", "PORT ELIZABETH", "PRETORIA"};
+
+        // 2D array storing sales figures[span_1](start_span)[span_1](end_span)
+        int[][] sales = {
+            {1000, 2000, 3000},
+            {2000, 3000, 4000},
+            {1500, 1100, 1200}
+        };
+
+        // Print header[span_2](start_span)[span_2](end_span)
+        System.out.println("--------------------------------------------------");
+        System.out.println("GAMING CONSOLE REPORT");
+        System.out.println("--------------------------------------------------");
+
+        // Print table header columns
+        System.out.printf("%-20s", "");
+        for (String console : consoles) {
+            System.out.printf("%-10s", console);
+        }
+        System.out.println();
+
+        // Print sales per city[span_3](start_span)[span_3](end_span)
+        for (int i = 0; i < cities.length; i++) {
+            System.out.printf("%-20s", cities[i]);
+            for (int j = 0; j < sales[i].length; j++) {
+                System.out.printf("%-10d", sales[i][j]);
+            }
+            System.out.println();
+        }
+
+        // Print totals section header[span_4](start_span)[span_4](end_span)
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("CONSOLE SALES TOTALS FOR EACH CITY");
+        System.out.println("--------------------------------------------------");
+
+        int highestSales = 0;
+        String topCity = "";
+
+        // Calculate total sales per city and find highest performing city[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
+        for (int i = 0; i < cities.length; i++) {
+            int total = 0;
+            for (int j = 0; j < sales[i].length; j++) {
+                total += sales[i][j];
+            }
+
+            System.out.printf("%-20s%d\n", cities[i], total);
+
+            if (total > highestSales) {
+                highestSales = total;
+                topCity = cities[i];
+            }
+        }
+
+        // Print top performing city[span_7](start_span)[span_7](end_span)
+        System.out.println("\nCITY WITH THE MOST SALES: " + topCity);
+        System.out.println("--------------------------------------------------");
+    }
+}
