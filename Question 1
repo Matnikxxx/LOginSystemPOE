@@ -1,0 +1,61 @@
+public class ConsoleSalesReport {
+
+    public static void main(String[] args) {
+        // 1. Array Declarations and Population (6 Marks)
+        String[] consoles = {"PS5", "XBOX", "SWITCH"};
+        String[] cities = {"CAPE TOWN", "PORT ELIZABETH", "PRETORIA"};
+
+        int[][] sales = {
+            {1000, 2000, 3000}, // Cape Town
+            {2000, 3000, 4000}, // Port Elizabeth
+            {1500, 1100, 1200}  // Pretoria
+        };
+
+        // 2. Printing Rows and Columns Report (4 Marks)
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("GAMING CONSOLE REPORT");
+        System.out.println("------------------------------------------------------------------");
+
+        // Print column headers
+        System.out.printf("%-24s", "");
+        for (String console : consoles) {
+            System.out.printf("%-15s", console);
+        }
+        System.out.println();
+
+        // Print table rows
+        for (int i = 0; i < cities.length; i++) {
+            System.out.printf("%-24s", cities[i]);
+            for (int j = 0; j < sales[i].length; j++) {
+                System.out.printf("%-15d", sales[i][j]);
+            }
+            System.out.println();
+        }
+
+        // 3. Printing Data and Calculation of Totals (6 Marks)
+        System.out.println("\n------------------------------------------------------------------");
+        System.out.println("CONSOLE SALES TOTALS FOR EACH CITY");
+        System.out.println("------------------------------------------------------------------");
+
+        int maxSales = 0;
+        String topCity = "";
+
+        for (int i = 0; i < cities.length; i++) {
+            int cityTotal = 0;
+            for (int j = 0; j < sales[i].length; j++) {
+                cityTotal += sales[i][j];
+            }
+
+            System.out.printf("%-16s%d\n", cities[i], cityTotal);
+
+            // 4. Determine City with Most Sales (4 Marks)
+            if (cityTotal > maxSales) {
+                maxSales = cityTotal;
+                topCity = cities[i];
+            }
+        }
+
+        System.out.println("\nCITY WITH THE MOST SALES: " + topCity);
+        System.out.println("------------------------------------------------------------------");
+    }
+}
